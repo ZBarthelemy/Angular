@@ -1,8 +1,8 @@
 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
 <div class="row">
 
-  <div class="col-xs-12 col-md-8 example-container">
-  Bubba's Form
+  <div class="col-xs-12 col-md-8 FormContainer">
+  <br>Bubba's Form
 
   <mat-form-field hintLabel="Max 20 characters">
     <input matInput #input maxlength="20" placeholder="First Name">
@@ -32,27 +32,39 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-accordion>
-    <mat-expansion-panel>
+  <mat-accordion multi=True>
+    <mat-expansion-panel class="AddressPanel">
       <mat-expansion-panel-header>
         <mat-panel-title>
           Mailing Address
         </mat-panel-title>
-        <mat-panel-description>
-          Where you live
-        </mat-panel-description>
       </mat-expansion-panel-header>
 
-      <mat-form-field class="street-address">
+      <mat-form-field class="shipping-street-address">
         <input matInput placeholder="Street Address 1">
       </mat-form-field>
-      <br>
-      <mat-form-field class="City">
-        <input matInput placeholder="City">
+      <mat-form-field class="shipping-street-address2">
+        <input matInput placeholder="Street Address 2">
+        <mat-hint>(optional)</mat-hint>
       </mat-form-field>
       <br>
+      <mat-form-field class="City" id="CityFormField">
+        <input matInput placeholder="City">
+      </mat-form-field>
+      <mat-form-field class="State" id="StateFormField">
+        <input matInput placeholder="State">
+      </mat-form-field>
+      <mat-form-field class="Zip" id="ZipCodeFormField">
+        <input matInput placeholder="Zip">
+      </mat-form-field>
       <mat-form-field class="Country">
-        <input matInput placeholder="Country">
+        <input type="text" placeholder="Country" aria-label="Number"
+               matInput [formControl]="countryFormControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let supportedCountry of supportedCountries" [value]="supportedCountry">
+            {{supportedCountry}}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
 
     </mat-expansion-panel>
@@ -61,18 +73,27 @@
                          (closed)="panelOpenState = false">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Self aware panel
+          Billing Address
         </mat-panel-title>
         <mat-panel-description>
-          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+          {{sameAsShipping ? '' : 'Same as shipping' }}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
+        <mat-checkbox aria-label="Number" [(ngModel)]="sameAsShipping">Different</mat-checkbox>
+
+      <mat-form-field class="billing-street-address">
+        <input matInput placeholder="Street Address 1">
+      </mat-form-field>
+      <mat-form-field class="billing-street-address2">
+        <input matInput placeholder="Street Address 2">
+        <mat-hint>(optional)</mat-hint>
+      </mat-form-field>
+
     </mat-expansion-panel>
   </mat-accordion>
 
   </div>
-  <div class="col-xs-6 col-md-4">The Scream
+  <div class="col-xs-6 col-md-4"><br>The Scream
     <img src="../../../assets/img/the_morty_scream.png">
   </div>
 </div>

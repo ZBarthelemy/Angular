@@ -1,9 +1,9 @@
-.example-container {
+.FormContainer {
   display: flex;
   flex-direction: column;
 }
 
-.example-container > * {
+.FormContainer > * {
   width: 100%;
 }
 
@@ -12,10 +12,21 @@ img {
   height: auto;
 }
 
-/*.street-address{*/
-  /*max-width: 100%;*/
-  /*height: auto;*/
-/*}*/
-mat-expansion-panel {
-  width: 100%;
+::ng-deep .mat-expansion-panel-content > .mat-expansion-panel-body{
+  padding: 0 16px 16px;
 }
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix{
+  width: 360px;
+}
+
+#CityFormField{
+  width: 200px;
+}
+#StateFormField{
+  width: 80px;
+}
+
+/*.mat-expansion-panel-content > .mat-expansion-panel-body {*/
+  /*padding: 0 !important;*/
+/*}*/

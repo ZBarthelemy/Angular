@@ -12,13 +12,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PageNotFoundComponent } from './page-not-found.component';
-import { MatExpansionModule, MatFormFieldModule,
-         MatInputModule, MatSelectModule } from "@angular/material";
+import {
+  MatAutocompleteModule, MatCheckboxModule,
+  MatExpansionModule, MatFormFieldModule,
+  MatInputModule, MatSelectModule } from "@angular/material";
 
 @NgModule({
   imports: [
     FormsModule,
     ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatCheckboxModule,
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
