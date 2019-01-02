@@ -1,0 +1,21 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*.street-address{*/
+  /*max-width: 100%;*/
+  /*height: auto;*/
+/*}*/
+mat-expansion-panel {
+  width: 100%;
+}

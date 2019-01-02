@@ -1,3 +1,78 @@
-<p>
-  form works!
-</p>
+<!-- Stack the columns on mobile by making one full-width and the other half-width -->
+<div class="row">
+
+  <div class="col-xs-12 col-md-8 example-container">
+  Bubba's Form
+
+  <mat-form-field hintLabel="Max 20 characters">
+    <input matInput #input maxlength="20" placeholder="First Name">
+    <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field hintLabel="Max 20 characters">
+    <input matInput #input maxlength="20" placeholder="Last Name">
+    <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" [formControl]="emailFormControl"
+           [errorStateMatcher]="matcher">
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Experience">
+      <mat-option value="option" *ngFor="let option of options">
+        {{option}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Mailing Address
+        </mat-panel-title>
+        <mat-panel-description>
+          Where you live
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field class="street-address">
+        <input matInput placeholder="Street Address 1">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="City">
+        <input matInput placeholder="City">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="Country">
+        <input matInput placeholder="Country">
+      </mat-form-field>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Self aware panel
+        </mat-panel-title>
+        <mat-panel-description>
+          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  </div>
+  <div class="col-xs-6 col-md-4">The Scream
+    <img src="../../../assets/img/the_morty_scream.png">
+  </div>
+</div>
